@@ -21,5 +21,11 @@ namespace clrh81 {
         public MainWindow() {
             InitializeComponent();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e) {
+            var sut = new Sample1();
+            sut.指定インデックの値取得();
+                
+        }
     }
 }
