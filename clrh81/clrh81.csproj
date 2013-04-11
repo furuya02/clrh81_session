@@ -55,6 +55,7 @@
     </ApplicationDefinition>
     <Compile Include="Sample0.cs" />
     <Compile Include="Sample1.cs" />
+    <Compile Include="Sample2.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
