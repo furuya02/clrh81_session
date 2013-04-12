@@ -1,50 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace clrh81 {
-//    class Sample2{
-//
-//
-//
-//        List<int> numList = new List<int>();
-//
-//        public IEnumerable<int> GetEvenNums() {
-//            //lock (numList) {
-//                return numList.Where(i => i % 2 == 0);
-//            //}
-//        }
-//
-//        public void AddNum(int num) {
-//            //lock (numList) {
-//                numList.Add(num);
-//            //}
-//        }
-//
-//    }
-//
-    class DbClass{
+
+    class Db{
         List<int> _list = new List<int>();
 
         public IEnumerable<int> GetList() {
-            //lock (numList) {
-            return _list.Where(i => i % 2 == 0);
-            //}
+            lock (_list) {
+                foreach (var i in _list){
+                    if (i%2 == 0){
+                        yield return i;
+                    }
+                }
+            }
         }
 
         public void Add(int i) {
-            //lock (numList) {
-            _list.Add(i);
-            //}
+            lock (_list) {
+                _list.Add(i);
+            }
         }
     }
 
     class Sample2{
-        
-
+        public void Main(){
+            var db = new Db();
+            var count = db.GetList().Count();
+        }
         
     }
 }
